@@ -1,3 +1,4 @@
+import { HttpModule } from '@nestjs/axios';
 import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -10,6 +11,7 @@ import {
 
 @Module({
   imports: [
+    HttpModule,
     CacheModule.register(),
     MongooseModule.forFeature(
       [

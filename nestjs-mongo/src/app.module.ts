@@ -8,6 +8,7 @@ import { ReceiptModule } from './modules/receipts.module';
 import { CustomerMetricModule } from './modules/customer_metrics.module';
 import { ProductionMetricModule } from './modules/production_metrics.module';
 import { DailyMetricModule } from './modules/daily_metrics.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { DailyMetricModule } from './modules/daily_metrics.module';
     CustomerMetricModule,
     ProductionMetricModule,
     DailyMetricModule,
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       load: [databaseConfig],
     }),
