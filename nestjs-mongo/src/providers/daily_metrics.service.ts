@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { CACHE_MANAGER, CacheStore } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 import { Model } from 'mongoose';
 import { firstValueFrom } from 'rxjs';
 import { DailyMetric } from 'src/schemas/daily_metrics.model';
@@ -16,7 +16,7 @@ export class DailyMetricService {
     private readonly httpService: HttpService,
   ) {}
 
-  @Cron('* 41 17 * * *')
+  @Cron('0 0 22 * * *', { timeZone: 'UTC+1' })
   async getDailyMetrics(): Promise<any> {
     try {
       const response = await firstValueFrom(
